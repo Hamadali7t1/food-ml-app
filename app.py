@@ -5,30 +5,16 @@ from tensorflow.keras.models import load_model
 
 def download_file(url, output):
     if not os.path.exists(output):
-        gdown.download(url, output, quiet=False)
+        gdown.download(url, output, quiet=False, fuzzy=True)
 
-# ===== FILE 1 (Main Model) =====
-download_file(
-    "https://drive.google.com/uc?id=1ujoYbuS3vRgOo-TAu-BUaHEn58MB0W1q",
-    "best_mobilenetv2_food101.keras"
-)
+download_file("https://drive.google.com/uc?id=1ujoYbuS3vRgOo-TAu-BUaHEn58MB0W1q",
+              "best_mobilenetv2_food101.keras")
 
-# ===== FILE 2 (Second Model) =====
-download_file(
-    "https://drive.google.com/uc?id=1VgsyhCRayqn7ZgVnFk7jMDozgbZC3N0f",
-    "food101_mobilenetv2_final.h5"
-)
+download_file("https://drive.google.com/uc?id=1sPfNLnn3D6MoslvhflHfFutM9yXZIhWJ",
+              "class_names.pkl")
 
-# ===== FILE 3 (Class Names) =====
-download_file(
-    "https://drive.google.com/uc?id=1sPfNLnn3D6MoslvhflHfFutM9yXZIhWJ",
-    "class_names.pkl"
-)
-
-# ===== LOAD MODEL =====
 model = load_model("best_mobilenetv2_food101.keras")
 
-# ===== LOAD CLASS NAMES =====
 with open("class_names.pkl", "rb") as f:
     class_names = pickle.load(f)
 import pickle
@@ -279,6 +265,7 @@ if st.button("Reset Today's Intake"):
     clear_today_entries(st.session_state.user_id)
     st.success("Today's intake data has been reset.")
     st.rerun()
+
 
 
 
