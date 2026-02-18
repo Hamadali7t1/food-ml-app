@@ -1,3 +1,11 @@
+import gdown
+import os
+
+url = "https://drive.google.com/drive/folders/1mTI34Qq3frhW90pGTB6zS15RdAQkoiio?usp=drive_link"
+output = "class_names.pkl"
+
+if not os.path.exists(output):
+    gdown.download(url, output, quiet=False)
 import pickle
 
 import pandas as pd
@@ -246,3 +254,4 @@ if st.button("Reset Today's Intake"):
     clear_today_entries(st.session_state.user_id)
     st.success("Today's intake data has been reset.")
     st.rerun()
+
