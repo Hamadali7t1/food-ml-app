@@ -5,9 +5,9 @@ def download_file(url, output):
     if not os.path.exists(output):
         gdown.download(url, output, quiet=False)
 
-download_file("https://drive.google.com/uc?id=1ujoYbuS3vRgOo-TAu-BUaHEn58MB0W1q", "best_mobilenetv2_food101.keras")
-download_file("https://drive.google.com/uc?id=1VgsyhCRayqn7ZgVnFk7jMDozgbZC3N0f", "food101_mobilenetv2_final.h5")
-download_file("https://drive.google.com/uc?id=1sPfNLnn3D6MoslvhflHfFutM9yXZIhWJ", "class_names.pkl")
+load_model("https://drive.google.com/uc?id=1ujoYbuS3vRgOo-TAu-BUaHEn58MB0W1q", "best_mobilenetv2_food101.keras")
+load_model("https://drive.google.com/uc?id=1VgsyhCRayqn7ZgVnFk7jMDozgbZC3N0f", "food101_mobilenetv2_final.h5")
+load_model("https://drive.google.com/uc?id=1sPfNLnn3D6MoslvhflHfFutM9yXZIhWJ", "class_names.pkl")
 import pickle
 
 import pandas as pd
@@ -256,6 +256,7 @@ if st.button("Reset Today's Intake"):
     clear_today_entries(st.session_state.user_id)
     st.success("Today's intake data has been reset.")
     st.rerun()
+
 
 
 
